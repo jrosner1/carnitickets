@@ -67,17 +67,18 @@ def main():
                 result = sheet.values().get(spreadsheetId=i[1],
                                             range='Team Roster!B:B').execute()
                 values = result.get('values', [])
-
-                if not values:
-                    print('No data found.')
-                    return
-                team_members = 0
-                for row in values[2:]:
-                    for name in order_name_list:
-                        if len(row) > 0 and first_initial_last_name(row[0].upper()) == name[0]:
-                            name[2] = True
-                            team_members += name[1]
-                            num_matched += name[1]
+                with open(i[0] + '.txt', 'w') as t:
+                    if not values:
+                        print('No data found.')
+                        return
+                    team_members = 0
+                    for row in values[2:]:
+                        for name in order_name_list:
+                            if len(row) > 0 and first_initial_last_name(row[0].upper()) == name[0]:
+                                name[2] = True
+                                team_members += name[1]
+                                num_matched += name[1]
+                                t.write(row[0] + '\n')
                 print("Team " + i[0] + " has " + str(team_members) + " tickets ordered.")
             for i in order_name_list:
                 if i[2] == False:
