@@ -72,17 +72,21 @@ def main():
                     print('No data found.')
                     return
                 team_members = 0
-                for row in values[2:]:
-                    for name in order_name_list:
-                        if len(row) > 0 and first_initial_last_name(row[0].upper()) == name[0]:
-                            name[2] = True
-                            team_members += name[1]
-                            num_matched += name[1]
-                print("Team " + i[0] + " has " + str(team_members) + " tickets ordered.")
+                with open(i[0], 'w') as team:
+                    for row in values[2:]:
+                        for name in order_name_list:
+                            if len(row) > 0 and first_initial_last_name(row[0].upper()) == name[0]:
+                                name[2] = True
+                                team_members += name[1]
+                                num_matched += name[1]
+                                team.write(row[0]+ '\n')
+                    team.close()
+                    print("Team " + i[0] + " has " + str(team_members) + " tickets ordered.")
             for i in order_name_list:
                 if i[2] == False:
                     f.write(i[0] + '\n')
             print("There are " + str(num_orders - num_matched) + " tickets that the program could not match with someone on a team")
+            f.close()
         
 
     except HttpError as err:
