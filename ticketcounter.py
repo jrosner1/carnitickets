@@ -1,5 +1,5 @@
 from __future__ import print_function
-import os.path
+import os
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -10,16 +10,16 @@ import csv
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 sheet_list = [
-    ['FINDING_DORY', '12tJdPMmUPscgNfBjhW4r1muTH2MRn8JbC5E1IH4oLUo'],
-    ['BOOTY_FEAST', '1vRBpDEYK7PTwWG8OLfnzR1axkd2zuB5FtnvrKgq0TIY'],
-    ['INSTANT_RAW', '1AvORD2SSjgnOjnp6Je9gKb-NlYdb_uF1M4Iz1h4hVRw'],
-    ['MILWAUKEE', '1pjj3wuRV48VdP8jAOubnUFcR3_4z4hKrC0pxlEzQsdw'],
-    ['GLUCK', '1GPxcNhnofyQLY4kRbJi4-aSF3kXLgK9_iZm5eCtjEX0'],
-    ['SPIDERMAN', '16O-_ivG4O9aXTl_WLYi3wUE_flx8okJ6jlCCyXURuZE'],
-    ['JIZZ', '1YZFIXLdc8Bmj_S52Yp60Dvv_fTVCnFawxeG9HWcW3rw'],
-    ['RIM', '1IzqDvQd_HC9VrYfGevkpn9avjxoZtbF7IbUwTq0aUuo'],
-    ['PINK_SPANKS', '1PHAW6R_BlZ5ugxNBv1bYaU0pVkJK0JLICjACxaRwI9A'],
-    ['DICKEY','1yYlnLF5cyi7gQR3mEWkkwAEog4LNvVipX7P9lQbaA9Y']
+    ['Team1', os.environ['TEAM_SHEET_URL_1']],
+    ['Team2', os.environ['TEAM_SHEET_URL_2']],
+    ['Team3', os.environ['TEAM_SHEET_URL_3']],
+    ['Team4', os.environ['TEAM_SHEET_URL_4']],
+    ['Team5', os.environ['TEAM_SHEET_URL_5']],
+    ['Team6', os.environ['TEAM_SHEET_URL_6']],
+    ['Team7', os.environ['TEAM_SHEET_URL_7']],
+    ['Team8', os.environ['TEAM_SHEET_URL_8']],
+    ['Team9', os.environ['TEAM_SHEET_URL_9']],
+    ['Team10', os.environ['TEAM_SHEET_URL_10']]
 ]
 
 def main():
@@ -58,7 +58,6 @@ def main():
             token.write(creds.to_json())
     try:
         with open('unmatched.txt', 'w') as f:
-            #f.write('readme')
             service = build('sheets', 'v4', credentials=creds)
             # Call the Sheets API
             num_matched = 0
