@@ -1,5 +1,8 @@
 # carnitickets
 
+## Overview
+This script was used in order to match tickets ordered from a wix store to team rosters that are hosted in Google Sheets. This script uses the Google Cloud API in order to access the sheets, and matches the orders from wix which are downloaded as a CSV to the names in the roster. The script also reports all orders that were not matched to a name on a roster.
+
 ## Quickstart
 To run the `ticketConter.py` script, first install the necessary Google API dependencies using `pip`. Directions for doing so can be found [here](https://developers.google.com/sheets/api/quickstart/python#step_1_install_the_google_client_library).
 
